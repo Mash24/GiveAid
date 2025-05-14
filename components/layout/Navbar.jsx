@@ -25,27 +25,33 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="flex items-center">
+          <div className="flex items-center space-x-4">
+            <Link href="/donate-item" className="text-gray-600 hover:text-gray-900">
+              Donate Items
+            </Link>
+            <Link href="/donate-money" className="text-gray-600 hover:text-gray-900">
+              Donate Money
+            </Link>
             {user ? (
               <>
-                <Link href="/dashboard" className="text-gray-600 hover:text-gray-900 px-3 py-2">
+                <Link href="/dashboard" className="text-gray-600 hover:text-gray-900">
                   Dashboard
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="ml-4 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+                  className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
                 >
                   Logout
                 </button>
               </>
             ) : (
               <>
-                <Link href="/login" className="text-gray-600 hover:text-gray-900 px-3 py-2">
+                <Link href="/login" className="text-gray-600 hover:text-gray-900">
                   Login
                 </Link>
                 <Link
                   href="/register"
-                  className="ml-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+                  className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
                 >
                   Register
                 </Link>
