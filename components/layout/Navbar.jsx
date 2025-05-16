@@ -3,9 +3,16 @@ import Link from 'next/link';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase/config';
 import { signOut } from 'firebase/auth';
+import { useEffect, useState } from 'react';
 
 const Navbar = () => {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
+  const [mounted, setMounted] = useState(false);
+
+  // Handle hydration mismatch by only showing auth-dependent UI after mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleLogout = async () => {
     try {
@@ -32,7 +39,10 @@ const Navbar = () => {
             <Link href="/donate-money" className="text-gray-600 hover:text-gray-900">
               Donate Money
             </Link>
-            {user ? (
+            {!mounted ? (
+              // Show loading state during SSR and initial client render
+              <div className="h-8 w-20 bg-gray-200 animate-pulse rounded"></div>
+            ) : user ? (
               <>
                 <Link href="/dashboard" className="text-gray-600 hover:text-gray-900">
                   Dashboard

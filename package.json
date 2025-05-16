@@ -12,6 +12,7 @@
     "@hookform/resolvers": "^5.0.1",
     "@paypal/react-paypal-js": "^8.8.3",
     "@react-google-maps/api": "^2.20.6",
+    "@stripe/react-stripe-js": "^3.7.0",
     "@stripe/stripe-js": "^7.3.0",
     "emailjs-com": "^3.2.0",
     "firebase": "^11.7.1",
