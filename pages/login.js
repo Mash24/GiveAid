@@ -82,58 +82,69 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-gray-50">
-      {/* Left: Branding / Hero */}
-      <div className="hidden md:flex w-1/2 bg-gradient-to-br from-blue-600 to-indigo-700 items-center justify-center p-12 animate-slide-in-left">
-        <div className="max-w-md text-white space-y-8">
-          <div className="flex items-center space-x-3">
+      {/* Left: Story, Trust, and Visuals */}
+      <div className="hidden md:flex w-1/2 relative items-center justify-center overflow-hidden">
+        {/* Vibrant Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-green-400 via-blue-500 to-purple-600 opacity-90 z-0" />
+        {/* Heartwarming Photo Overlay */}
+        <img
+          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+          alt="People helping each other"
+          className="absolute inset-0 w-full h-full object-cover opacity-40 z-10"
+        />
+        {/* Content */}
+        <div className="relative z-20 max-w-lg mx-auto text-white p-10 rounded-3xl bg-black bg-opacity-20 backdrop-blur-md shadow-2xl animate-fade-in">
+          <div className="flex items-center space-x-3 mb-4">
             <svg className="h-10 w-10 text-white animate-bounce" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span className="text-3xl font-bold tracking-tight">CharityConnect</span>
+            <span className="text-3xl font-bold tracking-tight drop-shadow-lg">CharityConnect</span>
           </div>
-          <h2 className="text-4xl font-extrabold animate-fade-in">Welcome Back</h2>
-          <p className="text-lg animate-fade-in delay-100">
-            Sign in to access your dashboard, donate, volunteer, and see your impact.
+          <h2 className="text-4xl font-extrabold mb-2 animate-fade-in">Every login helps change a life</h2>
+          <p className="text-lg mb-6 animate-fade-in delay-100">
+            "Last month, <span className='font-bold text-yellow-200'>1,200+ donors</span> helped Jane get life-saving surgery. Join us and make a difference every day."
           </p>
-          <ul className="space-y-2 animate-fade-in delay-200">
-            <li className="flex items-center">
-              <span className="inline-block w-2 h-2 bg-green-400 rounded-full mr-2"></span>
-              Secure &amp; private
-            </li>
-            <li className="flex items-center">
-              <span className="inline-block w-2 h-2 bg-green-400 rounded-full mr-2"></span>
-              Fast &amp; easy login
-            </li>
-            <li className="flex items-center">
-              <span className="inline-block w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+          {/* Trust Badges */}
+          <div className="flex flex-wrap gap-4 mb-6 animate-fade-in delay-200">
+            <div className="flex items-center bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm font-semibold shadow-md backdrop-blur-sm">
+              <svg className="h-5 w-5 text-green-300 mr-2 animate-pulse" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
               1000+ lives changed
-            </li>
-          </ul>
+            </div>
+            <div className="flex items-center bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm font-semibold shadow-md backdrop-blur-sm">
+              <svg className="h-5 w-5 text-blue-200 mr-2" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 11c0-1.657-1.343-3-3-3s-3 1.343-3 3 1.343 3 3 3 3-1.343 3-3zm0 0c0-1.657 1.343-3 3-3s3 1.343 3 3-1.343 3-3 3-3-1.343-3-3z" /></svg>
+              Secure & Private
+            </div>
+            <div className="flex items-center bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm font-semibold shadow-md backdrop-blur-sm">
+              <svg className="h-5 w-5 text-yellow-200 mr-2 animate-spin" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /></svg>
+              As seen on
+              <span className="ml-1 font-bold">GoFundMe</span>
+            </div>
+          </div>
+          {/* Subtle confetti (optional) */}
+          <div className="absolute bottom-4 right-4 animate-float">
+            <svg width="32" height="32" fill="none"><circle cx="16" cy="16" r="16" fill="#fff" fillOpacity="0.2" /></svg>
+          </div>
         </div>
       </div>
       {/* Right: Login Form */}
-      <div className="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-white animate-fade-in">
-        <div className={`max-w-md w-full space-y-8 transition-all duration-500 ${shake ? 'animate-shake' : ''}`} ref={formRef}>
+      <div className="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-white animate-slide-in-right">
+        <div className={`max-w-md w-full space-y-8 transition-all duration-500 bg-white rounded-2xl shadow-2xl p-8 ${shake ? 'animate-shake' : ''}`} ref={formRef}>
           <ToastContainer position="top-center" autoClose={4000} />
-          <div className="sm:mx-auto sm:w-full sm:max-w-md mb-6 md:hidden">
-            <div className="flex items-center justify-center space-x-2">
-              <svg className="h-8 w-8 text-blue-600 animate-bounce" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span className="text-2xl font-bold text-blue-700">CharityConnect</span>
-            </div>
+          <div className="sm:mx-auto sm:w-full sm:max-w-md mb-6 md:hidden flex items-center justify-center space-x-2">
+            <svg className="h-8 w-8 text-blue-600 animate-bounce" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span className="text-2xl font-bold text-blue-700">CharityConnect</span>
           </div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to your account
-          </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 animate-fade-in">Sign in to your account</h2>
+          <p className="mt-2 text-center text-sm text-gray-600 animate-fade-in delay-100">
             Welcome back! Please enter your details.
           </p>
           <button
             type="button"
             onClick={handleGoogle}
             disabled={googleLoading}
-            className="w-full flex items-center justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-4 transition"
+            className="w-full flex items-center justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium bg-gradient-to-r from-green-400 to-blue-500 text-white hover:from-green-500 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mb-4 transition animate-fade-in delay-200"
           >
             <svg className="h-5 w-5 mr-2" viewBox="0 0 48 48">
               <g>
@@ -224,49 +235,26 @@ export default function Login() {
               {loading ? 'Signing in...' : 'Sign in'}
             </button>
           </form>
-          <div className="mt-6 text-center text-sm text-gray-600">
-            Don't have an account?{' '}
-            <Link href="/register" className="font-medium text-blue-600 hover:text-blue-500">
-              Sign up
-            </Link>
+          {/* Why join CharityConnect? */}
+          <div className="mt-8 bg-gray-50 rounded-xl p-4 text-gray-700 shadow-inner animate-fade-in delay-300">
+            <h3 className="font-semibold mb-2 text-lg text-blue-700">Why join CharityConnect?</h3>
+            <ul className="space-y-1 text-sm">
+              <li>🌍 Make a real impact in your community</li>
+              <li>🤝 Connect with donors, volunteers, and causes</li>
+              <li>🔒 Safe, secure, and trusted by thousands</li>
+            </ul>
           </div>
-          {/* Forgot Password Modal */}
-          {showReset && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 animate-fade-in">
-              <div className="bg-white rounded-lg shadow-lg p-8 max-w-sm w-full animate-fade-in-fast">
-                <h3 className="text-lg font-bold mb-2 text-gray-900">Reset your password</h3>
-                <p className="text-sm text-gray-600 mb-4">Enter your email and we'll send you a reset link.</p>
-                <form onSubmit={handleReset} className="space-y-4">
-                  <input
-                    type="email"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="Your email"
-                    value={resetEmail}
-                    onChange={e => setResetEmail(e.target.value)}
-                    required
-                  />
-                  <div className="flex justify-end space-x-2">
-                    <button
-                      type="button"
-                      onClick={() => { setShowReset(false); setResetEmail(''); }}
-                      className="px-4 py-2 rounded bg-gray-200 text-gray-700 hover:bg-gray-300"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="submit"
-                      disabled={resetLoading}
-                      className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                      {resetLoading ? 'Sending...' : 'Send reset link'}
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          )}
         </div>
       </div>
+      {/* Footer */}
+      <footer className="w-full absolute bottom-0 left-0 py-4 bg-white bg-opacity-80 text-center text-gray-500 text-xs z-50 border-t border-gray-100 animate-fade-in delay-500">
+        <span>© {new Date().getFullYear()} CharityConnect. All rights reserved. · </span>
+        <Link href="/privacy" className="underline">Privacy Policy</Link>
+        <span> · </span>
+        <Link href="/terms" className="underline">Terms</Link>
+        <span> · </span>
+        <Link href="/support" className="underline">Support</Link>
+      </footer>
       <style jsx global>{`
         .animate-fade-in {
           animation: fadeIn 0.7s;
@@ -274,8 +262,8 @@ export default function Login() {
         .animate-fade-in-fast {
           animation: fadeIn 0.4s;
         }
-        .animate-slide-in-left {
-          animation: slideInLeft 1s cubic-bezier(0.23, 1, 0.32, 1);
+        .animate-slide-in-right {
+          animation: slideInRight 1s cubic-bezier(0.23, 1, 0.32, 1);
         }
         .animate-shake {
           animation: shake 0.4s;
@@ -284,8 +272,8 @@ export default function Login() {
           from { opacity: 0; transform: translateY(20px);}
           to { opacity: 1; transform: translateY(0);}
         }
-        @keyframes slideInLeft {
-          from { opacity: 0; transform: translateX(-60px);}
+        @keyframes slideInRight {
+          from { opacity: 0; transform: translateX(60px);}
           to { opacity: 1; transform: translateX(0);}
         }
         @keyframes shake {
